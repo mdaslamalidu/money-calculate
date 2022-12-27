@@ -1,0 +1,39 @@
+import { FingerPrintIcon, UserPlusIcon } from "@heroicons/react/24/solid";
+import React from "react";
+import { NavLink } from "react-router-dom";
+
+const AdminMenu = () => {
+  return (
+    <div>
+      <>
+        <NavLink
+          to="all-users"
+          className={({ isActive }) =>
+            `flex items-center pl-4 py-2 mt-5  transition-colors rounded-l-lg duration-300 transform  hover:bg-white   hover:text-blue-700 ${
+              isActive ? "bg-white  text-[#297BFF]" : "text-white"
+            }`
+          }
+        >
+          <FingerPrintIcon className="w-5 h-5" />
+
+          <span className="mx-4 font-medium">All Users</span>
+        </NavLink>
+
+        <NavLink
+          to="all-bookings"
+          className={({ isActive }) =>
+            `flex items-center pl-4 py-2 mt-5  transition-colors rounded-l-lg duration-300 transform  hover:bg-white   hover:text-blue-700 ${
+              isActive ? "bg-white  text-[#297BFF]" : "text-white"
+            }`
+          }
+        >
+          <UserPlusIcon className="w-5 h-5" />
+
+          <span className="mx-4 font-medium">All Bookings</span>
+        </NavLink>
+      </>
+    </div>
+  );
+};
+
+export default AdminMenu;
