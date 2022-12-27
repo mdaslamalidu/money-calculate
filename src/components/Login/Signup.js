@@ -21,11 +21,14 @@ const Signup = () => {
     event.preventDefault();
     const name = event.target.name.value;
     const email = event.target.email.value;
-    const image = event.target.image.files[0];
+    // const image = event.target.image.files[0];
     const password = event.target.password.value;
+    console.log(email, password);
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        toast.success("Create User Successfully");
+        navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
   };
@@ -103,7 +106,7 @@ const Signup = () => {
                 className="w-full bg-blue-600 text-white py-3 rounded mb-2"
                 type="submit"
               >
-                Sign In
+                Sign Up
               </button>
             </div>
           </form>
