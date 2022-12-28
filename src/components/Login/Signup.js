@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
+import { hostDataApi } from "../../api/Users";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Signup = () => {
@@ -15,7 +16,7 @@ const Signup = () => {
   } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/dashboard";
+  const from = location.state?.from?.pathname || "/pending";
 
   const handleSingIn = (event) => {
     event.preventDefault();
@@ -23,11 +24,16 @@ const Signup = () => {
     const email = event.target.email.value;
     // const image = event.target.image.files[0];
     const password = event.target.password.value;
-    console.log(email, password);
+    const hostData = {
+      name,
+      email,
+      role: "requested",
+    };
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
         toast.success("Create User Successfully");
+        hostDataApi(hostData).then((data) => console.log(data));
         navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));

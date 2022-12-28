@@ -4,6 +4,7 @@ import Signup from "../components/Login/Signup";
 import Home from "../components/pages/Dashboard/Home";
 import Ladger from "../components/pages/Dashboard/Ladger";
 import Header from "../components/pages/Header";
+import Pending from "../components/pages/Pending";
 import DashboardLayout from "../Main/DashboardLayout";
 
 export const routes = createBrowserRouter([
@@ -14,6 +15,10 @@ export const routes = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup></Signup>,
+  },
+  {
+    path: "/pending",
+    element: <Pending></Pending>,
   },
   {
     path: "/dashboard",
