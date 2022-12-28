@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getuser } from "../../api/Users";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
@@ -9,7 +10,6 @@ const Login = () => {
     useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/dashboard";
 
   const handleSingIn = (event) => {
     event.preventDefault();
@@ -19,7 +19,14 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         toast.success("sign in sucessfully");
-        navigate(from, { replace: true });
+        getuser(email).then((data) => {
+          if (data.role === "requested") {
+            navigate("/pending");
+            console.log("pending");
+          } else {
+            navigate("/dashboard/home");
+          }
+        });
       })
       .catch((error) => {
         toast.error(error.message);

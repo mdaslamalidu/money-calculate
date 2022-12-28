@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   ArrowRightOnRectangleIcon,
@@ -7,8 +7,11 @@ import {
   UserPlusIcon,
 } from "@heroicons/react/24/solid";
 import AdminMenu from "./AdminMenu";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import UserMenu from "./UserMenu";
 
-const Navbar = () => {
+const Navbar = ({ role }) => {
+  const { user } = useContext(AuthContext);
   const [isActive, setActive] = useState("false");
   const handleToggle = () => {
     setActive(!isActive);
@@ -76,7 +79,7 @@ const Navbar = () => {
             </Link>
           </div>
           {/* nav items */}
-          <AdminMenu></AdminMenu>
+          {role === "admin" ? <AdminMenu></AdminMenu> : <UserMenu></UserMenu>}
           <div className="absolute bottom-5 w-full">
             <button className="w-full flex items-center pl-4 py-2 mt-3  transition-colors rounded-l-lg duration-300 transform  hover:bg-white font-bold  hover:text-blue-700 text-white">
               <svg

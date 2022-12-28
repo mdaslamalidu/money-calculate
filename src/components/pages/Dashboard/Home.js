@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { getuser } from "../../../api/Users";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Header from "../Header";
 
 const Home = () => {
+  const { user } = useContext(AuthContext);
+  const [role, setRole] = useState(null);
+  const [loading, setLoading] = useState(true);
+  console.log(user);
+
+  useEffect(() => {
+    getuser(user?.email).then((data) => {
+      console.log(data.role);
+      setRole(data.role);
+      setLoading(false);
+    });
+  }, [user]);
   return (
     <div>
       <Header></Header>
@@ -102,7 +116,11 @@ const Home = () => {
         </div>
         <div className="flex justify-center font-bold px-4">
           <h1 className="text-7xl absolute top-1/2 text-gray-400">
-            Welcome to <span className="text-blue-600">Admin</span> Dashborad
+            Welcome to{" "}
+            <span className="text-blue-600">
+              {role === "admin" ? "Admin" : "Member"}
+            </span>{" "}
+            Dashborad
           </h1>
         </div>
       </div>

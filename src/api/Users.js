@@ -15,7 +15,7 @@ export const hostDataApi = async (host) => {
 };
 
 export const getuser = async (email) => {
-  const url = `http://localhost:8000/users/${email}`;
+  const url = `http://localhost:5000/users/${email}`;
 
   const response = await fetch(url);
 
