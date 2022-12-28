@@ -7,7 +7,7 @@ const UserMenu = () => {
     <div>
       <>
         <NavLink
-          to="all-users"
+          to="/dashboard/home"
           className={({ isActive }) =>
             `flex items-center pl-4 py-2 mt-3  transition-colors rounded-l-lg duration-300 transform  hover:bg-white   hover:text-blue-700 ${
               isActive ? "bg-white  text-[#297BFF]" : "text-white"
@@ -72,6 +72,6 @@ const UserMenu = () => {
 };
 
 export default UserMenu;
- 
+
 // money - calculate;
 // qjNlBN6csYLxJYJg;
