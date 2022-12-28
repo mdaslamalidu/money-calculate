@@ -19,7 +19,7 @@ const Navbar = () => {
       {/* Small Screen Navbar */}
       <div className="bg-[#297BFF] text-white flex justify-between md:hidden">
         <div>
-          <div className="block cursor-pointer p-4 font-bold">
+          <div className="block cursor-pointer p-2 font-bold">
             <Link to="/">AdminOx</Link>
           </div>
         </div>
@@ -32,7 +32,7 @@ const Navbar = () => {
         </button>
       </div>
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#297BFF] w-64 space-y-6 pl-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#297BFF] w-64 space-y-6 pl-2 py-2 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
@@ -40,17 +40,17 @@ const Navbar = () => {
           <h2 className="text-3xl cursor-pointer font-semibold text-center text-white">
             <Link to="/"> AdminOx</Link>
           </h2>
-          <div className="flex flex-col items-center mt-6 -mx-2">
+          <div className="flex flex-col items-center mt-2 -mx-2">
             <Link to="/dashboard">
               <img
-                className="object-cover w-24 h-24 mx-2 rounded-full"
+                className="object-cover w-24 h-16 mx-2 rounded-full"
                 src=""
                 alt="avatar"
                 referrerPolicy="no-referrer"
               />
             </Link>
             <Link to="/dashboard">
-              <h4 className="mx-2 mt-2 font-medium text-white hover:underline">
+              <h4 className="mx-2 mt-1 font-medium text-white hover:underline">
                 Aslam
               </h4>
             </Link>
@@ -62,6 +62,11 @@ const Navbar = () => {
           </div>
           {/* nav items */}
           <AdminMenu></AdminMenu>
+          <div className="absolute bottom-5 w-full">
+            <button className="w-full flex items-center pl-4 py-2 mt-3  transition-colors rounded-l-lg duration-300 transform  hover:bg-white font-bold  hover:text-blue-700 text-white">
+              LogOut
+            </button>
+          </div>
         </div>
       </div>
     </>
