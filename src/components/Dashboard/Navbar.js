@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   ArrowRightOnRectangleIcon,
   Bars3Icon,
@@ -11,10 +11,19 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import UserMenu from "./UserMenu";
 
 const Navbar = ({ role }) => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const [isActive, setActive] = useState("false");
+  const navigate = useNavigate();
   const handleToggle = () => {
     setActive(!isActive);
+  };
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -81,7 +90,10 @@ const Navbar = ({ role }) => {
           {/* nav items */}
           {role === "admin" ? <AdminMenu></AdminMenu> : <UserMenu></UserMenu>}
           <div className="absolute bottom-5 w-full">
-            <button className="w-full flex items-center pl-4 py-2 mt-3  transition-colors rounded-l-lg duration-300 transform  hover:bg-white font-bold  hover:text-blue-700 text-white">
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center pl-4 py-2 mt-3  transition-colors rounded-l-lg duration-300 transform  hover:bg-white font-bold  hover:text-blue-700 text-white"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
