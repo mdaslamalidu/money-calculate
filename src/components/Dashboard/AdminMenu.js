@@ -144,7 +144,7 @@ const AdminMenu = () => {
           <span className="mx-4 font-medium">Member List</span>
         </NavLink>
         <NavLink
-          to="/dashboard/pendingAccount"
+          to="/dashboard/settings"
           className={({ isActive }) =>
             `flex items-center pl-4 py-2 mt-3  transition-colors rounded-l-lg duration-300 transform  hover:bg-white   hover:text-blue-700 ${
               isActive ? "bg-white  text-[#297BFF]" : "text-white"

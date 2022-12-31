@@ -4,6 +4,7 @@ import Signup from "../components/Login/Signup";
 import Home from "../components/pages/Dashboard/Home";
 import Ladger from "../components/pages/Dashboard/Ladger";
 import PendingAccounts from "../components/pages/Dashboard/PendingAccounts";
+import Settings from "../components/pages/Dashboard/Settings";
 import Header from "../components/pages/Header";
 import Pending from "../components/pages/Pending";
 import DashboardLayout from "../Main/DashboardLayout";
@@ -40,6 +41,10 @@ export const routes = createBrowserRouter([
       {
         path: "/dashboard/pendingAccounts",
         element: <PendingAccounts></PendingAccounts>,
+      },
+      {
+        path: "/dashboard/settings",
+        element: <Settings></Settings>,
       },
     ],
   },
