@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAllUser } from "../../../api/Users";
+import { getAllUser, makeHost } from "../../../api/Users";
 import Header from "../Header";
 
 const PendingAccounts = () => {
   const [users, setUsers] = useState([]);
 
-  const handleApproved = (id) => {
-    console.log(id);
+  const handleApproved = (user) => {
+    makeHost(user).then((data) => {
+      hostUser();
+    });
   };
 
   const handleDelete = (id) => {
     console.log(id);
   };
 
-  useEffect(() => {
+  const hostUser = () => {
     getAllUser().then((data) => {
       setUsers(data);
     });
+  };
+
+  useEffect(() => {
+    hostUser();
   }, []);
   return (
     <div>
@@ -56,7 +62,7 @@ const PendingAccounts = () => {
                     <td class="py-4 px-6">{user.email}</td>
                     <td class="py-4 px-6">
                       <button
-                        onClick={() => handleApproved(user._id)}
+                        onClick={() => handleApproved(user)}
                         className="bg-blue-600 text-white py-1 px-2 rounded"
                       >
                         {user.role === "requested" ? "Pending" : "Approved"}
