@@ -22,3 +22,11 @@ export const getuser = async (email) => {
   const data = await response.json();
   return data;
 };
+export const getAllUser = async () => {
+  const url = "http://localhost:5000/users";
+
+  const response = await fetch(url);
+
+  const data = await response.json();
+  return data;
+};

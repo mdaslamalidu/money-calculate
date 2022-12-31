@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getuser } from "../../api/Users";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
@@ -93,6 +93,12 @@ const Login = () => {
               </button>
             </div>
           </form>
+          <h2 className="text-center mt-3">
+            Are you new This site?{" "}
+            <Link to="/signup">
+              <span className="font-bold">Sign Up</span>
+            </Link>
+          </h2>
         </div>
       </div>
     </div>

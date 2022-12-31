@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { hostDataApi } from "../../api/Users";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
@@ -116,6 +116,12 @@ const Signup = () => {
               </button>
             </div>
           </form>
+          <h2 className="text-center mt-3">
+            Already Have an Account?{" "}
+            <Link to="/">
+              <span className="font-bold">Log In</span>
+            </Link>
+          </h2>
         </div>
       </div>
     </div>
