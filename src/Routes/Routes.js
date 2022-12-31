@@ -3,6 +3,7 @@ import Login from "../components/Login/Login";
 import Signup from "../components/Login/Signup";
 import Home from "../components/pages/Dashboard/Home";
 import Ladger from "../components/pages/Dashboard/Ladger";
+import PendingAccounts from "../components/pages/Dashboard/PendingAccounts";
 import Header from "../components/pages/Header";
 import Pending from "../components/pages/Pending";
 import DashboardLayout from "../Main/DashboardLayout";
@@ -35,6 +36,10 @@ export const routes = createBrowserRouter([
       {
         path: "/dashboard/ladger",
         element: <Ladger></Ladger>,
+      },
+      {
+        path: "/dashboard/pendingAccounts",
+        element: <PendingAccounts></PendingAccounts>,
       },
     ],
   },
