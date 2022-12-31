@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { getuser, hostDataApi } from "../../../api/Users";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Header from "../Header";
@@ -15,16 +16,17 @@ const Settings = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const name = event.target.name.value;
-    const fathername = event.target.fathername.value;
-    const mothername = event.target.mothername.value;
-    const presentAddress = event.target.presentAddress.value;
-    const permanentAddress = event.target.permanentAddress.value;
-    const email = event.target.email.value;
-    const nidNumber = event.target.nidNumber.value;
-    const phoneNumber = event.target.phoneNumber.value;
-    const image = event.target.image.files[0];
-    const password = event.target.password.value;
+    const form = event.target;
+    const name = form.name.value;
+    const fathername = form.fathername.value;
+    const mothername = form.mothername.value;
+    const presentAddress = form.presentAddress.value;
+    const permanentAddress = form.permanentAddress.value;
+    const email = form.email.value;
+    const nidNumber = form.nidNumber.value;
+    const phoneNumber = form.phoneNumber.value;
+    const image = form.image.files[0];
+    const password = form.password.value;
     const formData = new FormData();
     formData.append("image", image);
 
@@ -49,8 +51,13 @@ const Settings = () => {
           imgURl: data.data.display_url,
         };
         hostDataApi(usersInfo)
-          .then((data) => console.log(data))
-          .catch((error) => console.log(error));
+          .then((data) => {
+            toast.success("Update Your Information");
+            form.reset();
+          })
+          .catch((error) => {
+            toast.error(error.message);
+          });
       })
       .catch((error) => console.log(error));
   };
@@ -80,7 +87,7 @@ const Settings = () => {
                   type="text"
                   name="name"
                   id="name"
-                  defaultValue={updateUser?.email}
+                  defaultValue={updateUser?.name}
                   placeholder="Enter Your Name Here"
                   className="w-full px-3 py-2 border rounded-md border-blue-300 focus:outline-blue-500 bg-white text-gray-900"
                   data-temp-mail-org="0"
@@ -88,7 +95,7 @@ const Settings = () => {
               </div>
               <div>
                 <label htmlFor="email" className="block mb-2 text-sm">
-                  Mother's Name
+                  Father's Name
                 </label>
                 <input
                   type="text"
@@ -101,7 +108,7 @@ const Settings = () => {
               </div>
               <div>
                 <label htmlFor="email" className="block mb-2 text-sm">
-                  Father's Name
+                  Mother's Name
                 </label>
                 <input
                   type="text"

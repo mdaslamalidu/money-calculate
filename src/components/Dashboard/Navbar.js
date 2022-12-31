@@ -10,7 +10,7 @@ import AdminMenu from "./AdminMenu";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import UserMenu from "./UserMenu";
 
-const Navbar = ({ role }) => {
+const Navbar = ({ UserRole }) => {
   const { user, logout } = useContext(AuthContext);
   const [isActive, setActive] = useState("false");
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const Navbar = ({ role }) => {
       <div className="bg-[#297BFF] text-white flex justify-between md:hidden">
         <div>
           <div className="block cursor-pointer p-2 font-bold">
-            <Link to="/">Admin</Link>
+            <Link to="/">{UserRole.role === "admin" ? "Admin" : "User"}</Link>
           </div>
         </div>
 
@@ -65,30 +65,34 @@ const Navbar = ({ role }) => {
               />
             </svg>
 
-            <Link to="/"> Admin</Link>
+            <Link to="/">{UserRole.role === "admin" ? "Admin" : "User"}</Link>
           </h2>
           <div className="flex flex-col items-center mt-2 -mx-2">
             <Link to="/dashboard">
               <img
                 className="object-cover w-16 h-16 mx-2 rounded-full border-2 border-white"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJDzbt50KeFVmvrPK2X34uWqGnEv9SsHqlULReqk7D&s"
+                src={UserRole.imgURl}
                 alt="profile"
                 referrerPolicy="no-referrer"
               />
             </Link>
             <Link to="/dashboard">
               <h4 className="mx-2 mt-1 font-medium text-white hover:underline">
-                Aslam
+                {UserRole.name}
               </h4>
             </Link>
             <Link to="/dashboard">
               <p className="mx-2 mt-1 text-sm font-medium text-white  hover:underline">
-                mdaslamali675@gmail.com
+                {UserRole.email}
               </p>
             </Link>
           </div>
           {/* nav items */}
-          {role === "admin" ? <AdminMenu></AdminMenu> : <UserMenu></UserMenu>}
+          {UserRole.role === "admin" ? (
+            <AdminMenu></AdminMenu>
+          ) : (
+            <UserMenu></UserMenu>
+          )}
           <div className="absolute bottom-5 w-full">
             <button
               onClick={handleLogout}

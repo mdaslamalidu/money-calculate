@@ -6,14 +6,13 @@ import Navbar from "../components/Dashboard/Navbar";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
-  const [role, setRole] = useState(null);
+  const [UserRole, setUserRole] = useState(null);
   const [loading, setLoading] = useState(true);
   console.log(user);
 
   useEffect(() => {
     getuser(user?.email).then((data) => {
-      console.log(data.role);
-      setRole(data.role);
+      setUserRole(data);
       setLoading(false);
     });
   }, [user]);
@@ -24,7 +23,7 @@ const DashboardLayout = () => {
       ) : (
         <>
           <div>
-            <Navbar role={role}></Navbar>
+            <Navbar UserRole={UserRole}></Navbar>
           </div>
           <div className="flex-1 md:ml-64">
             <Outlet></Outlet>
