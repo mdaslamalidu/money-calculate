@@ -1,27 +1,31 @@
 import React from "react";
 import Header from "../Header";
 
-const MemberHistory = () => {
+const AllPayments = () => {
   return (
     <div>
       <Header></Header>
       <div>
-        <h1 className="my-4 text-center text-2xl font-bold">History of</h1>
+        <h1 className="my-4 text-center text-2xl font-bold">Payment History</h1>
+
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg mx-4">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="py-3 px-6">
-                  Serial
+                  Name
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  Type
+                  Payment Type
                 </th>
                 <th scope="col" className="py-3 px-6">
                   Month
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  Deposit Date
+                  Payment Date
+                </th>
+                <th scope="col" className="py-3 px-6">
+                  Amount
                 </th>
               </tr>
             </thead>
@@ -46,4 +50,4 @@ const MemberHistory = () => {
   );
 };
 
-export default MemberHistory;
+export default AllPayments;
