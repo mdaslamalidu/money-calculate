@@ -1,6 +1,6 @@
 export const hostDataApi = async (host) => {
   const url = `http://localhost:5000/users/${host?.email}`;
-
+  console.log(host);
   const response = await fetch(url, {
     method: "PUT",
     headers: {

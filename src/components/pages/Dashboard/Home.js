@@ -1,21 +1,53 @@
 import React, { useContext, useEffect, useState } from "react";
-import { getuser } from "../../../api/Users";
+import { getAllUser, getuser } from "../../../api/Users";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Header from "../Header";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
-  const [role, setRole] = useState(null);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  console.log(user);
+  const [totalTaka, setTotalTaka] = useState("");
+  const [unpaidUser, setUnpaidUer] = useState([]);
+  const [sortDate, setSortDate] = useState("");
 
   useEffect(() => {
-    getuser(user?.email).then((data) => {
-      console.log(data.role);
-      setRole(data.role);
-      setLoading(false);
+    getAllUser().then((data) => {
+      const memberUser = data.filter((memberU) => memberU.role === "member");
+      const userAmountData = data.filter((userAmount) => userAmount.amount);
+      const date = data.filter((d) => d.date);
+      userAmount(userAmountData);
+      setUsers(memberUser);
+      setUnpaidUer(userAmountData);
+      dateSort(date);
     });
-  }, [user]);
+  }, []);
+
+  const dateSort = (date) => {
+    let arraySort = [];
+    for (let dateSorted of date) {
+      arraySort.push(dateSorted.date);
+    }
+    arraySort.sort(function (a, b) {
+      if (a > b) {
+        return -1;
+      }
+      if (a < b) {
+        return 1;
+      }
+      return 0;
+    });
+    return setSortDate(arraySort[0]);
+  };
+
+  const userAmount = (userAmountData) => {
+    let totalAmount = 0;
+    for (let amount of userAmountData) {
+      totalAmount += parseFloat(amount.amount);
+    }
+    setTotalTaka(totalAmount);
+  };
+
   return (
     <div>
       <Header></Header>
@@ -40,8 +72,8 @@ const Home = () => {
             </div>
             <div className="text-end font-medium">
               <h2>Total Amount</h2>
-              <h2>0</h2>
-              <h2>last update 28 dec 22</h2>
+              <h2 className="text-2xl font-bold">${totalTaka}</h2>
+              <h2>last update {sortDate}</h2>
             </div>
           </div>
           <div className="bg-white my-4 py-2 mx-[5px] px-2 rounded flex justify-between items-center">
@@ -63,8 +95,8 @@ const Home = () => {
             </div>
             <div className="text-end font-medium">
               <h2>Total Member</h2>
-              <h2>0</h2>
-              <h2>last update 28 dec 22</h2>
+              <h2 className="text-2xl font-bold">{users.length}</h2>
+              <h2>last update {sortDate}</h2>
             </div>
           </div>
           <div className="bg-white my-4 py-2 mx-[5px] px-2 rounded flex justify-between items-center">
@@ -86,8 +118,8 @@ const Home = () => {
             </div>
             <div className="text-end font-medium">
               <h2>Amount of This Month</h2>
-              <h2>0</h2>
-              <h2>last update 28 dec 22</h2>
+              <h2 className="text-2xl font-bold">${totalTaka}</h2>
+              <h2>last update {sortDate}</h2>
             </div>
           </div>
           <div className="bg-white my-4 py-2 mx-[5px] px-2 rounded flex justify-between items-center">
@@ -109,18 +141,17 @@ const Home = () => {
             </div>
             <div className="text-end font-medium">
               <h2>Unpaid of This Month</h2>
-              <h2>0</h2>
-              <h2>last update 28 dec 22</h2>
+              <h2 className="text-2xl font-bold">
+                {users.length - unpaidUser.length}
+              </h2>
+              <h2>last update {sortDate}</h2>
             </div>
           </div>
         </div>
         <div className="flex justify-center font-bold px-4">
           <h1 className="text-7xl absolute top-1/2 text-gray-400">
-            Welcome to{" "}
-            <span className="text-blue-600">
-              {role === "admin" ? "Admin" : "Member"}
-            </span>{" "}
-            Dashborad
+            Welcome
+            <span className="text-blue-600"> to</span> Dashborad
           </h1>
         </div>
       </div>

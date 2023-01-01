@@ -127,6 +127,7 @@ const Settings = () => {
                   type="email"
                   name="email"
                   id="email"
+                  defaultValue={updateUser?.email}
                   required
                   placeholder="Enter Your Email Here"
                   className="w-full px-3 py-2 border rounded-md border-blue-300 focus:outline-blue-500 bg-white text-gray-900"
