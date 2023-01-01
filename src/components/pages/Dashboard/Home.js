@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import Number from "../../../api/Number";
 import { getAllUser, getuser } from "../../../api/Users";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Header from "../Header";
@@ -72,7 +73,9 @@ const Home = () => {
             </div>
             <div className="text-end font-medium">
               <h2>Total Amount</h2>
-              <h2 className="text-2xl font-bold">${totalTaka}</h2>
+              <h2 className="text-2xl font-bold">
+                <Number n={totalTaka}></Number>
+              </h2>
               <h2>last update {sortDate}</h2>
             </div>
           </div>
@@ -95,7 +98,9 @@ const Home = () => {
             </div>
             <div className="text-end font-medium">
               <h2>Total Member</h2>
-              <h2 className="text-2xl font-bold">{users.length}</h2>
+              <h2 className="text-2xl font-bold">
+                <Number n={users.length}></Number>
+              </h2>
               <h2>last update {sortDate}</h2>
             </div>
           </div>
@@ -118,7 +123,9 @@ const Home = () => {
             </div>
             <div className="text-end font-medium">
               <h2>Amount of This Month</h2>
-              <h2 className="text-2xl font-bold">${totalTaka}</h2>
+              <h2 className="text-2xl font-bold">
+                <Number n={totalTaka}></Number>{" "}
+              </h2>
               <h2>last update {sortDate}</h2>
             </div>
           </div>
@@ -142,7 +149,7 @@ const Home = () => {
             <div className="text-end font-medium">
               <h2>Unpaid of This Month</h2>
               <h2 className="text-2xl font-bold">
-                {users.length - unpaidUser.length}
+                <Number n={users.length - unpaidUser.length}></Number>
               </h2>
               <h2>last update {sortDate}</h2>
             </div>
