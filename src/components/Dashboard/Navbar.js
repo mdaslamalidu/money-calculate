@@ -32,7 +32,9 @@ const Navbar = ({ UserRole }) => {
       <div className="bg-[#297BFF] text-white flex justify-between md:hidden">
         <div>
           <div className="block cursor-pointer p-2 font-bold">
-            <Link to="/">{UserRole.role === "admin" ? "Admin" : "User"}</Link>
+            <Link to="/dashboard/home">
+              {UserRole.role === "admin" ? "Admin" : "User"}
+            </Link>
           </div>
         </div>
 
@@ -65,7 +67,9 @@ const Navbar = ({ UserRole }) => {
               />
             </svg>
 
-            <Link to="/">{UserRole.role === "admin" ? "Admin" : "User"}</Link>
+            <Link to="/dashboard/home">
+              {UserRole.role === "admin" ? "Admin" : "User"}
+            </Link>
           </h2>
           <div className="flex flex-col items-center mt-2 -mx-2">
             <Link to="/dashboard">

@@ -54,9 +54,6 @@ const Ladger = () => {
                 <th scope="col" className="py-3 px-6">
                   Dec
                 </th>
-                <th scope="col" className="py-3 px-6">
-                  March
-                </th>
               </tr>
             </thead>
             <tbody>

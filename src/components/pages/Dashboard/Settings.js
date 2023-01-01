@@ -78,7 +78,7 @@ const Settings = () => {
             action=""
             className="space-y-6 ng-untouched ng-pristine ng-valid"
           >
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="email" className="block mb-2 text-sm">
                   Name
