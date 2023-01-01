@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getAllUser, makeHost } from "../../../api/Users";
 import Header from "../Header";
 
-const PendingAccounts = () => {
+const MemberList = () => {
   const [users, setUsers] = useState([]);
 
   const handleApproved = (user) => {
@@ -23,7 +24,7 @@ const PendingAccounts = () => {
 
   const hostUser = () => {
     getAllUser().then((users) => {
-      const pendingUser = users.filter((user) => user.role === "requested");
+      const pendingUser = users.filter((user) => user.role === "member");
       setUsers(pendingUser);
     });
   };
@@ -47,16 +48,22 @@ const PendingAccounts = () => {
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="py-3 px-6">
+                    Image
+                  </th>
+                  <th scope="col" className="py-3 px-6">
                     name
                   </th>
                   <th scope="col" className="py-3 px-6">
                     Email
                   </th>
                   <th scope="col" className="py-3 px-6">
+                    Total Amount
+                  </th>
+                  <th scope="col" className="py-3 px-6">
                     Action
                   </th>
                   <th scope="col" className="py-3 px-6">
-                    Delete
+                    Details
                   </th>
                 </tr>
               </thead>
@@ -69,24 +76,41 @@ const PendingAccounts = () => {
                           scope="row"
                           class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                         >
+                          <img
+                            class="w-10 h-10 rounded-full"
+                            src={
+                              user?.imgURL
+                                ? "user?.imgURL"
+                                : "https://www.pngall.com/wp-content/uploads/5/User-Profile-Transparent-180x180.png"
+                            }
+                            alt="Rounded avatar"
+                          />
+                        </th>
+                        <th
+                          scope="row"
+                          class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        >
                           {user.name}
                         </th>
                         <td class="py-4 px-6">{user.email}</td>
+                        <td class="py-4 px-6">{user.email}</td>
                         <td class="py-4 px-6">
-                          <button
-                            onClick={() => handleApproved(user)}
-                            className="bg-blue-600 text-white py-1 px-2 rounded"
+                          <Link
+                            to={`/dashboard/memberList/history/${user?._id}`}
                           >
-                            {user.role === "requested" ? "Pending" : "Approved"}
-                          </button>
+                            <button className="bg-blue-600 text-white py-1 px-2 rounded">
+                              Accounts
+                            </button>
+                          </Link>
                         </td>
                         <td class="py-4 px-6 ">
-                          <button
-                            onClick={() => handleDelete(user._id)}
-                            className="bg-red-600 text-white py-1 px-2 rounded"
+                          <Link
+                            to={`/dashboard/memberList/details/${user?._id}`}
                           >
-                            Delete
-                          </button>
+                            <button className="bg-red-600 text-white py-1 px-2 rounded">
+                              Show
+                            </button>
+                          </Link>
                         </td>
                       </tr>
                     </>
@@ -100,4 +124,4 @@ const PendingAccounts = () => {
   );
 };
 
-export default PendingAccounts;
+export default MemberList;

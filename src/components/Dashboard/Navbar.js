@@ -71,7 +71,11 @@ const Navbar = ({ UserRole }) => {
             <Link to="/dashboard">
               <img
                 className="object-cover w-16 h-16 mx-2 rounded-full border-2 border-white"
-                src={UserRole.imgURl}
+                src={
+                  UserRole.imgURl
+                    ? "UserRole.imgURl"
+                    : "https://www.pngall.com/wp-content/uploads/5/User-Profile-Transparent-180x180.png"
+                }
                 alt="profile"
                 referrerPolicy="no-referrer"
               />
