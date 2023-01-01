@@ -3,7 +3,21 @@ import { getAllUser } from "../../../api/Users";
 
 const Deposit = () => {
   const [users, setUsers] = useState([]);
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const amount = form.amount.value;
+    const message = form.message.value;
+    const date = form.data.value;
+    const paymentType = form.paymentType.value;
+    const data = {
+      amount,
+      message,
+      date,
+      paymentType,
+    };
+    console.log(data);
+  };
 
   useEffect(() => {
     getAllUser()
@@ -29,6 +43,7 @@ const Deposit = () => {
               </label>
               <select
                 id="small"
+                name="email"
                 class="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 {users.map((user) => (
@@ -44,6 +59,7 @@ const Deposit = () => {
               </label>
               <select
                 id="small"
+                name="paymentType"
                 class="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option value="ontime">On Time</option>
@@ -56,7 +72,7 @@ const Deposit = () => {
               </label>
               <input
                 type="date"
-                name="mothername"
+                name="date"
                 id="small"
                 placeholder="Enter Your Name Here"
                 className="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -81,7 +97,7 @@ const Deposit = () => {
               </label>
               <textarea
                 className="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                name=""
+                name="message"
                 id=""
                 cols="10"
                 rows="5"
