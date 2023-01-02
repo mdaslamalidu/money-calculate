@@ -7,19 +7,18 @@ const AllPayments = () => {
   useEffect(() => {
     getAllUser()
       .then((data) => {
-        const filtredData = data.filter((user) => user.role === "member");
+        const filtredData = data.filter((user) => user.depositAmountDate);
         setUsers(filtredData);
-        console.log(filtredData);
       })
       .catch((error) => console.log(error));
   }, []);
 
   const depositDate = (myDate) => {
     const lengthNumber = myDate.length - 1;
-    const lastDate = myDate[lengthNumber].date;
-    const date = lastDate.split("-")[1];
-    const year = lastDate.split("-")[0];
-    console.log(date);
+    const lastDate = myDate[lengthNumber]?.date;
+    const date = lastDate?.split("-")[1];
+    const year = lastDate?.split("-")[0];
+    console.log(lastDate);
 
     if (date === "01") {
       return `JAN-${year}`;
@@ -52,12 +51,12 @@ const AllPayments = () => {
 
   const depositAmount = (amountData) => {
     const lengthNumber = amountData.length - 1;
-    return amountData[lengthNumber].amount;
+    return amountData[lengthNumber]?.amount;
   };
 
   const depositLastDate = (lastDate) => {
     const lengthNumber = lastDate.length - 1;
-    return lastDate[lengthNumber].date;
+    return lastDate[lengthNumber]?.date;
   };
 
   return (
@@ -101,16 +100,16 @@ const AllPayments = () => {
                       scope="row"
                       class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                     >
-                      {user.paymentType}
+                      {user?.paymentType}
                     </th>
                     <td class="py-4 px-6">
-                      {depositDate(user.depositAmountDate)}
+                      {depositDate(user?.depositAmountDate)}
                     </td>
                     <td class="py-4 px-6">
-                      {depositLastDate(user.depositAmountDate)}
+                      {depositLastDate(user?.depositAmountDate)}
                     </td>
                     <td class="py-4 px-6">
-                      {depositAmount(user.depositAmountDate)}
+                      {depositAmount(user?.depositAmountDate)}
                     </td>
                   </tr>
                 ))}

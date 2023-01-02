@@ -22,11 +22,7 @@ const MemberList = () => {
   return (
     <div>
       <Header></Header>
-      {userss.length === 0 ? (
-        <h1 className="my-4 text-center text-2xl font-bold">
-          No Pending Member
-        </h1>
-      ) : (
+      {userss && (
         <div>
           <h1 className="my-4 text-center text-2xl font-bold">Member List</h1>
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg mx-4">

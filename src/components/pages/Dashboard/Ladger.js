@@ -18,40 +18,41 @@ const Ladger = () => {
   }, []);
 
   const depositAmount = (user) => {
-    // const tag = document.createElement("td");
-    // // user.depositAmountDate.forEach((amountDate) => {
-    // //   console.log(amountDate.amount);
-    // //   tag.appendChild = `<th>${amountDate.amount}</th>`;
-    // //   // console.log(user.depositAmountDate);
-    // //   // for (let amount of user.depositAmountDate) {
-    // //   //   tag.appendChild = `<th>${amount.amount}</th>`;
-    // //   // }
-    // });
-    // // return tag;
-    // console.log(tag);
+    let totalAmount = 0;
+    for (let userAmount of user) {
+      totalAmount += parseInt(userAmount.amount);
+    }
+    return totalAmount;
   };
 
-  const UserSetup = (user, index) => {
-    console.log(user, index);
+  const UserSetup = (user) => {
     return (
       <>
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
           <th
             scope="row"
             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-          >
-            {index.index}
-          </th>
+          ></th>
           <th
             scope="row"
             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
           >
             {user.user.name}
           </th>
-          {/* {user.user.depositAmount.map((data) => data.amount)} */}
-          <td class="py-4 px-6 td">
-            {/* {user.depositAmount.map((data) => data.amount)} */}
-          </td>
+
+          <th
+            scope="row"
+            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            {depositAmount(user.user.depositAmountDate)}
+          </th>
+          <th
+            scope="row"
+            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            {user.user.depositAmountDate.length}{" "}
+            {/* {user.user.depositAmountDate.length > 1 ? "Payments" : "Payment"} */}
+          </th>
         </tr>
       </>
     );
@@ -74,47 +75,44 @@ const Ladger = () => {
                   Name
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  Jan
+                  TotalAmount
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  Feb
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  March
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  April
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  May
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  June
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  July
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  August
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Sep
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Oct
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Nov
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Dec
+                  TotalPayment
                 </th>
               </tr>
             </thead>
             <tbody>
               {users &&
                 users.map((user, index) => (
-                  <UserSetup user={user} index={index} key={index}></UserSetup>
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th
+                      scope="row"
+                      class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      {index + 1}
+                    </th>
+                    <th
+                      scope="row"
+                      class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      {user.name}
+                    </th>
+
+                    <th
+                      scope="row"
+                      class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      {depositAmount(user.depositAmountDate)}
+                    </th>
+                    <th
+                      scope="row"
+                      class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      {user.depositAmountDate.length}{" "}
+                      {/* {user.user.depositAmountDate.length > 1 ? "Payments" : "Payment"} */}
+                    </th>
+                  </tr>
                 ))}
             </tbody>
           </table>

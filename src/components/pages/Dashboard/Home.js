@@ -5,11 +5,9 @@ import Header from "../Header";
 
 const Home = () => {
   const [users, setUsers] = useState([]);
-  const [totalTaka, setTotalTaka] = useState("");
+  const [totalTaka, setTotalTaka] = useState(0);
   const [unpaidUser, setUnpaidUer] = useState([]);
   const [sortDate, setSortDate] = useState("");
-
-  console.log(users);
 
   useEffect(() => {
     getAllUser().then((data) => {
@@ -154,7 +152,7 @@ const Home = () => {
             <div className="text-end font-medium">
               <h2>Unpaid of This Month</h2>
               <h2 className="text-2xl font-bold">
-                <Number n={users.length - unpaidUser.length}></Number>
+                <Number n={unpaidUser.length - users.length}></Number>
               </h2>
               <h2>last update {sortDate}</h2>
             </div>
