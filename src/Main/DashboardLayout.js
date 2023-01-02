@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { getuser } from "../api/Users";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Navbar from "../components/Dashboard/Navbar";

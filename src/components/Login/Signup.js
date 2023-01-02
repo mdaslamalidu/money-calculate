@@ -5,15 +5,8 @@ import { hostDataApi } from "../../api/Users";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Signup = () => {
-  const [userEmail, setUserEmail] = useState("");
-  const {
-    createUser,
-    updateUserProfile,
-    verifyEmail,
-    signInWithGoogle,
-    setLoading,
-    loading,
-  } = useContext(AuthContext);
+  const [setUserEmail] = useState("");
+  const { createUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/pending";

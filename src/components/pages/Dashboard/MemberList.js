@@ -1,42 +1,28 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllUser, makeHost } from "../../../api/Users";
+import { getAllUsers } from "../../Services/Actions/UsersAction";
 import Header from "../Header";
 
 const MemberList = () => {
-  const [users, setUsers] = useState([]);
-
-  const handleApproved = (user) => {
-    makeHost(user).then(() => {
-      hostUser();
-    });
-  };
-
-  const handleDelete = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
-      method: "DELETE",
-    })
-      .then(() => {
-        hostUser();
-      })
-      .catch((error) => console.log(error.message));
-  };
+  const [userss, setUserss] = useState([]);
+  const { users } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const hostUser = () => {
-    getAllUser().then((users) => {
-      const pendingUser = users.filter((user) => user.role === "member");
-      setUsers(pendingUser);
-    });
+    const pendingUser = users.filter((user) => user.role === "member");
+    setUserss(pendingUser);
   };
 
   useEffect(() => {
     hostUser();
-  }, []);
+    dispatch(getAllUsers());
+  }, [hostUser]);
 
   return (
     <div>
       <Header></Header>
-      {users.length === 0 ? (
+      {userss.length === 0 ? (
         <h1 className="my-4 text-center text-2xl font-bold">
           No Pending Member
         </h1>
@@ -68,8 +54,8 @@ const MemberList = () => {
                 </tr>
               </thead>
               <tbody>
-                {users &&
-                  users.map((user) => (
+                {userss &&
+                  userss.map((user) => (
                     <>
                       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <th

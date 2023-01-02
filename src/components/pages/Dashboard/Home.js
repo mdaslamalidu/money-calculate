@@ -1,13 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Number from "../../../api/Number";
-import { getAllUser, getuser } from "../../../api/Users";
-import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import { getAllUser } from "../../../api/Users";
 import Header from "../Header";
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [totalTaka, setTotalTaka] = useState("");
   const [unpaidUser, setUnpaidUer] = useState([]);
   const [sortDate, setSortDate] = useState("");

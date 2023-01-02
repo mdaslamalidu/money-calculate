@@ -1,17 +1,12 @@
 import React, { useContext, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import {
-  ArrowRightOnRectangleIcon,
-  Bars3Icon,
-  FingerPrintIcon,
-  UserPlusIcon,
-} from "@heroicons/react/24/solid";
+import { Link, useNavigate } from "react-router-dom";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 import AdminMenu from "./AdminMenu";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import UserMenu from "./UserMenu";
 
 const Navbar = ({ UserRole }) => {
-  const { user, logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
   const [isActive, setActive] = useState("false");
   const navigate = useNavigate();
   const handleToggle = () => {

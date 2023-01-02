@@ -1,14 +1,12 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getuser } from "../../api/Users";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
-  const [userEmail, setUserEmail] = useState("");
-  const { signin, resetPassword, loading, setLoading, signInWithGoogle } =
-    useContext(AuthContext);
-  const location = useLocation();
+  const [setUserEmail] = useState("");
+  const { signin, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSingIn = (event) => {
