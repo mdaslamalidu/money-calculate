@@ -15,9 +15,9 @@ const MemberList = () => {
   };
 
   useEffect(() => {
-    hostUser();
     dispatch(getAllUsers());
-  }, [hostUser]);
+    hostUser();
+  }, []);
 
   return (
     <div>

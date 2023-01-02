@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { getAllUser, hostDataApi } from "../../../api/Users";
+import { addMoney, getAllUser, hostDataApi } from "../../../api/Users";
 import Header from "../Header";
 
 const Deposit = () => {
@@ -21,7 +21,7 @@ const Deposit = () => {
       email,
     };
     console.log(data);
-    hostDataApi(data)
+    addMoney(data)
       .then((updateData) => {
         toast.success("Successfully Deposit");
       })

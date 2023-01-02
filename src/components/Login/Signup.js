@@ -21,6 +21,7 @@ const Signup = () => {
       name,
       email,
       role: "requested",
+      depositAmountDate: [],
     };
     createUser(email, password)
       .then((result) => {

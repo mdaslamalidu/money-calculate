@@ -24,7 +24,7 @@ const Number = ({ n }) => {
           d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
         />
       </svg>
-      <animated.div>{number.to((n) => n.toFixed(0))}</animated.div>
+      <animated.div>{number?.to((n) => n.toFixed(0))}</animated.div>
     </div>
   );
 };

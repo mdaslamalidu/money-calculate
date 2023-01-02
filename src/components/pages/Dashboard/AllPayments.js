@@ -7,40 +7,57 @@ const AllPayments = () => {
   useEffect(() => {
     getAllUser()
       .then((data) => {
-        const filtredData = data.filter((user) => user.amount);
+        const filtredData = data.filter((user) => user.role === "member");
         setUsers(filtredData);
+        console.log(filtredData);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  const dataFunction = (date) => {
+  const depositDate = (myDate) => {
+    const lengthNumber = myDate.length - 1;
+    const lastDate = myDate[lengthNumber].date;
+    const date = lastDate.split("-")[1];
+    const year = lastDate.split("-")[0];
+    console.log(date);
+
     if (date === "01") {
-      return "JAN";
+      return `JAN-${year}`;
     } else if (date === "02") {
-      return "FEB";
+      return `FEB-${year}`;
     } else if (date === "03") {
-      return "MARCH";
+      return `MARCH-${year}`;
     } else if (date === "04") {
-      return "APRIL";
+      return `APRIL-${year}`;
     } else if (date === "05") {
-      return "MAY";
+      return `MAY-${year}`;
     } else if (date === "06") {
-      return "JUNE";
+      return `JUNE-${year}`;
     } else if (date === "07") {
-      return "JULY";
+      return `JULY-${year}`;
     } else if (date === "08") {
-      return "AUGUST";
+      return `AUGUST-${year}`;
     } else if (date === "09") {
-      return "SEP";
+      return `SEP-${year}`;
     } else if (date === "10") {
-      return "OCT";
+      return `OCT-${year}`;
     } else if (date === "11") {
-      return "NOV";
+      return `NOV-${year}`;
     } else if (date === "12") {
-      return "DEC";
+      return `DEC-${year}`;
     } else {
       return "No Month";
     }
+  };
+
+  const depositAmount = (amountData) => {
+    const lengthNumber = amountData.length - 1;
+    return amountData[lengthNumber].amount;
+  };
+
+  const depositLastDate = (lastDate) => {
+    const lengthNumber = lastDate.length - 1;
+    return lastDate[lengthNumber].date;
   };
 
   return (
@@ -87,12 +104,14 @@ const AllPayments = () => {
                       {user.paymentType}
                     </th>
                     <td class="py-4 px-6">
-                      {dataFunction(user.date.split("-")[1]) +
-                        " " +
-                        user.date.split("-")[0]}
+                      {depositDate(user.depositAmountDate)}
                     </td>
-                    <td class="py-4 px-6">{user.date}</td>
-                    <td class="py-4 px-6">{user.amount}</td>
+                    <td class="py-4 px-6">
+                      {depositLastDate(user.depositAmountDate)}
+                    </td>
+                    <td class="py-4 px-6">
+                      {depositAmount(user.depositAmountDate)}
+                    </td>
                   </tr>
                 ))}
             </tbody>
