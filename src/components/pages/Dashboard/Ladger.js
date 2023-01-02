@@ -1,12 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getAllUser } from "../../../api/Users";
 import Header from "../Header";
 
 const Ladger = () => {
+  const date = new Date().getFullYear();
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    getAllUser()
+      .then((data) => {
+        const filteredUser = data.filter(
+          (filteredUser) => filteredUser.role === "member"
+        );
+        setUsers(filteredUser);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const depositAmount = (user) => {
+    // const tag = document.createElement("td");
+    // // user.depositAmountDate.forEach((amountDate) => {
+    // //   console.log(amountDate.amount);
+    // //   tag.appendChild = `<th>${amountDate.amount}</th>`;
+    // //   // console.log(user.depositAmountDate);
+    // //   // for (let amount of user.depositAmountDate) {
+    // //   //   tag.appendChild = `<th>${amount.amount}</th>`;
+    // //   // }
+    // });
+    // // return tag;
+    // console.log(tag);
+  };
+
+  const UserSetup = (user, index) => {
+    console.log(user, index);
+    return (
+      <>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <th
+            scope="row"
+            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            {index.index}
+          </th>
+          <th
+            scope="row"
+            class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            {user.user.name}
+          </th>
+          {/* {user.user.depositAmount.map((data) => data.amount)} */}
+          <td class="py-4 px-6 td">
+            {/* {user.depositAmount.map((data) => data.amount)} */}
+          </td>
+        </tr>
+      </>
+    );
+  };
+
   return (
     <div>
       <Header></Header>
       <div>
-        <h1 className="my-4 text-center text-2xl font-bold">Ladger 2021</h1>
+        <h1 className="my-4 text-center text-2xl font-bold">Ladger {date}</h1>
 
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg mx-4">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -57,22 +112,10 @@ const Ladger = () => {
               </tr>
             </thead>
             <tbody>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th
-                  scope="row"
-                  class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  1
-                </th>
-                <th
-                  scope="row"
-                  class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Aslam
-                </th>
-                <td class="py-4 px-6"></td>
-                <td class="py-4 px-6"></td>
-              </tr>
+              {users &&
+                users.map((user, index) => (
+                  <UserSetup user={user} index={index} key={index}></UserSetup>
+                ))}
             </tbody>
           </table>
         </div>

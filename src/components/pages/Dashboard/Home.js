@@ -9,40 +9,48 @@ const Home = () => {
   const [unpaidUser, setUnpaidUer] = useState([]);
   const [sortDate, setSortDate] = useState("");
 
+  console.log(users);
+
   useEffect(() => {
     getAllUser().then((data) => {
       const memberUser = data.filter((memberU) => memberU.role === "member");
-      const userAmountData = data.filter((userAmount) => userAmount.amount);
-      const date = data.filter((d) => d.date);
+      const userAmountData = data.filter(
+        (userAmount) => userAmount.depositAmountDate
+      );
+
       userAmount(userAmountData);
       setUsers(memberUser);
       setUnpaidUer(userAmountData);
-      dateSort(date);
     });
   }, []);
 
-  const dateSort = (date) => {
-    let arraySort = [];
-    for (let dateSorted of date) {
-      arraySort.push(dateSorted.date);
-    }
-    arraySort.sort(function (a, b) {
-      if (a > b) {
-        return -1;
-      }
-      if (a < b) {
-        return 1;
-      }
-      return 0;
-    });
-    return setSortDate(arraySort[0]);
-  };
+  // const dateSort = (date) => {
+  //   let arraySort = [];
+  //   for (let dateSorted of date) {
+  //     arraySort.push(dateSorted.date);
+  //   }
+  //   arraySort.sort(function (a, b) {
+  //     if (a > b) {
+  //       return -1;
+  //     }
+  //     if (a < b) {
+  //       return 1;
+  //     }
+  //     return 0;
+  //   });
+  //   return setSortDate(arraySort[0]);
+  // };
 
   const userAmount = (userAmountData) => {
+    // console.log(userAmountData);
     let totalAmount = 0;
-    for (let amount of userAmountData) {
-      totalAmount += parseFloat(amount.amount);
-    }
+    userAmountData.forEach((amountDate) => {
+      const depostDate = amountDate.depositAmountDate;
+      console.log(depostDate);
+      for (let amount of depostDate) {
+        totalAmount += parseFloat(amount.amount);
+      }
+    });
     setTotalTaka(totalAmount);
   };
 
