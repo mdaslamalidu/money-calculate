@@ -1,5 +1,5 @@
 export const hostDataApi = async (host) => {
-  const url = `http://localhost:5000/users/${host?.email}`;
+  const url = `https://server-site-nu.vercel.app/users/${host?.email}`;
   console.log(host);
   const response = await fetch(url, {
     method: "PUT",
@@ -15,7 +15,7 @@ export const hostDataApi = async (host) => {
 };
 
 export const addMoney = async (host) => {
-  const url = `http://localhost:5000/addMoney/${host?.email}`;
+  const url = `https://server-site-nu.vercel.app/addMoney/${host?.email}`;
   console.log(host);
   const response = await fetch(url, {
     method: "PUT",
@@ -30,7 +30,7 @@ export const addMoney = async (host) => {
 };
 
 export const getuser = async (email) => {
-  const url = `http://localhost:5000/users/${email}`;
+  const url = `https://server-site-nu.vercel.app/users/${email}`;
 
   const response = await fetch(url);
 
@@ -39,7 +39,7 @@ export const getuser = async (email) => {
 };
 
 export const getAllUser = async () => {
-  const url = "http://localhost:5000/users";
+  const url = "https://server-site-nu.vercel.app/users";
   const response = await fetch(url);
   const data = await response.json();
   return data;
@@ -47,13 +47,16 @@ export const getAllUser = async () => {
 
 export const makeHost = async (user) => {
   delete user._id;
-  const response = await fetch(`http://localhost:5000/users/${user?.email}`, {
-    method: "PUT",
-    headers: {
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({ ...user, role: "member" }),
-  });
+  const response = await fetch(
+    `https://server-site-nu.vercel.app/users/${user?.email}`,
+    {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ ...user, role: "member" }),
+    }
+  );
   const users = await response.json();
 
   return users;

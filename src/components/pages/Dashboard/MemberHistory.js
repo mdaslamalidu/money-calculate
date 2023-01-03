@@ -8,7 +8,7 @@ const MemberHistory = () => {
   console.log(id);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/getUser/${id}`)
+    fetch(`https://server-site-nu.vercel.app/getUser/${id}`)
       .then((res) => res.json())
       .then((data) => setUser(data))
       .catch((error) => console.log(error));
