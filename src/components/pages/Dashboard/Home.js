@@ -56,7 +56,7 @@ const Home = () => {
     <div>
       <Header></Header>
       <div className="bg-gray-300">
-        <div className="grid grid-cols-2 md:grid-cols-4 ">
+        <div className="grid grid-cols md:grid-cols-2 lg:grid-cols-4 ">
           <div className="bg-white my-4 mx-[5px] py-2 px-2 rounded flex justify-between items-center">
             <div>
               <svg
@@ -159,7 +159,7 @@ const Home = () => {
           </div>
         </div>
         <div className="flex justify-center font-bold px-4">
-          <h1 className="text-7xl absolute top-1/2 text-gray-400">
+          <h1 className="md:text-4xl lg:text-7xl absolute md:top-2/3 lg:top-1/2 text-gray-400">
             Welcome
             <span className="text-blue-600"> to</span> Dashborad
           </h1>

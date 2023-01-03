@@ -33,23 +33,39 @@ const MemberDetails = () => {
             />
           </div>
           <div>
-            <h1 className="text-2xl mb-2 w-full bg-gray-200 py-2 px-2 rounded font-bold">
-              Name: {user.name}
+            <h1 className="text-2xl mb-2 mt-4 w-full bg-gray-200 py-2 px-2 rounded font-bold">
+              Name:{" "}
+              <span className="text-xl font-semibold mr-4">{user.name}</span>
             </h1>
             <h1 className="text-2xl mb-2 w-full bg-gray-200 py-2 px-2 rounded font-bold">
-              Fathername: {user.fathername}
+              Fathername:{" "}
+              <span className="text-xl font-semibold mr-4">
+                {user.fathername}
+              </span>
             </h1>
             <h1 className="text-2xl mb-2 w-full bg-gray-200 py-2 px-2 rounded font-bold">
-              Mothername: {user.mothername}
+              Mothername:{" "}
+              <span className="text-xl font-semibold mr-4">
+                {user.mothername}
+              </span>
             </h1>
             <h1 className="text-2xl mb-2 w-full bg-gray-200 py-2 px-2 rounded font-bold">
-              PermanentAddress: {user.permanentAddress}
+              PermanentAddress:{" "}
+              <span className="text-xl font-semibold mr-4">
+                {user.permanentAddress}
+              </span>
             </h1>
             <h1 className="text-2xl mb-2 w-full bg-gray-200 py-2 px-2 rounded font-bold">
-              PresentAddress: {user.presentAddress}
+              PresentAddress:{" "}
+              <span className="text-xl font-semibold mr-4">
+                {user.presentAddress}
+              </span>
             </h1>
             <h1 className="text-2xl mb-2 w-full bg-gray-200 py-2 px-2 rounded font-bold">
-              PhoneNumber: {user.phoneNumber}
+              PhoneNumber:{" "}
+              <span className="text-xl font-semibold mr-4">
+                {user.phoneNumber}
+              </span>
             </h1>
           </div>
         </div>
