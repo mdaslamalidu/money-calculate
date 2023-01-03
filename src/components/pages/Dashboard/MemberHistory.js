@@ -1,7 +1,10 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Header from "../Header";
 
 const MemberHistory = () => {
+  const { id } = useParams();
+  console.log(id);
   return (
     <div>
       <Header></Header>
@@ -12,7 +15,7 @@ const MemberHistory = () => {
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="py-3 px-6">
-                  Serial
+                  Name
                 </th>
                 <th scope="col" className="py-3 px-6">
                   Type
@@ -22,6 +25,9 @@ const MemberHistory = () => {
                 </th>
                 <th scope="col" className="py-3 px-6">
                   Deposit Date
+                </th>
+                <th scope="col" className="py-3 px-6">
+                  Payment
                 </th>
               </tr>
             </thead>

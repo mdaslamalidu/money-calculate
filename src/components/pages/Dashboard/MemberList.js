@@ -43,7 +43,7 @@ const MemberList = () => {
           <h1 className="my-4 text-center text-2xl font-bold">Member List</h1>
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg mx-4">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="py-3 px-6">
                     Image
@@ -68,7 +68,7 @@ const MemberList = () => {
               <tbody>
                 {users.map((user) => (
                   <>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
                       <th
                         scope="row"
                         class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -77,7 +77,7 @@ const MemberList = () => {
                           class="w-10 h-10 rounded-full"
                           src={
                             user?.imgURL
-                              ? "user?.imgURL"
+                              ? user?.imgURL
                               : "https://www.pngall.com/wp-content/uploads/5/User-Profile-Transparent-180x180.png"
                           }
                           alt="Rounded avatar"
