@@ -72,7 +72,7 @@ const Navbar = ({ UserRole }) => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-7 h-7 absolute bottom-1 left-0 md:left-12"
+              className="w-7 h-7 absolute bottom-1 left-4 md:left-12"
             >
               <path
                 strokeLinecap="round"

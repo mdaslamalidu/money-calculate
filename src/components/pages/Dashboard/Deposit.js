@@ -40,7 +40,7 @@ const Deposit = () => {
     <>
       <Header></Header>
       <div className="bg-slate-200 py-8 flex items-center">
-        <div className="w-1/2 mx-auto bg-white py-4 px-8 rounded">
+        <div className="w-full md:w-1/2 mx-auto bg-white py-4 px-8 rounded">
           <h2 className="text-2xl font-bold text-center">Deposit Money</h2>
           <form
             onSubmit={handleSubmit}
@@ -60,7 +60,7 @@ const Deposit = () => {
                 >
                   {users.map((user) => (
                     <option value={user.email}>
-                      {user.name} {user.phoneNumber} {user.email}
+                      {user.name} {user.email}
                     </option>
                   ))}
                 </select>
