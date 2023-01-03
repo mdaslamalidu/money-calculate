@@ -21,6 +21,8 @@ const Navbar = ({ UserRole }) => {
       .catch((err) => console.log(err));
   };
 
+  console.log(UserRole);
+
   return (
     <>
       {/* Small Screen Navbar */}
@@ -72,7 +74,7 @@ const Navbar = ({ UserRole }) => {
                 className="object-cover w-16 h-16 mx-2 rounded-full border-2 border-white"
                 src={
                   UserRole.imgURl
-                    ? "UserRole.imgURl"
+                    ? UserRole.imgURl
                     : "https://www.pngall.com/wp-content/uploads/5/User-Profile-Transparent-180x180.png"
                 }
                 alt="profile"

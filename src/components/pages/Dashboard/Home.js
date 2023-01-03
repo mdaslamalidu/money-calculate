@@ -13,7 +13,7 @@ const Home = () => {
     getAllUser().then((data) => {
       const memberUser = data.filter((memberU) => memberU.role === "member");
       const userAmountData = data.filter(
-        (userAmount) => userAmount.depositAmountDate
+        (userAmount) => userAmount.paymentType
       );
 
       userAmount(userAmountData);
@@ -152,7 +152,7 @@ const Home = () => {
             <div className="text-end font-medium">
               <h2>Unpaid of This Month</h2>
               <h2 className="text-2xl font-bold">
-                <Number n={unpaidUser.length - users.length}></Number>
+                <Number n={users.length - unpaidUser.length}></Number>
               </h2>
               <h2>last update {sortDate}</h2>
             </div>

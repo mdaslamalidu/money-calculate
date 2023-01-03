@@ -45,18 +45,22 @@ const AllPayments = () => {
     } else if (date === "12") {
       return `DEC-${year}`;
     } else {
-      return "No Month";
+      return "Payment Due";
     }
   };
 
   const depositAmount = (amountData) => {
     const lengthNumber = amountData.length - 1;
-    return amountData[lengthNumber]?.amount;
+    return amountData[lengthNumber]?.amount
+      ? amountData[lengthNumber]?.amount
+      : "Payment Due";
   };
 
   const depositLastDate = (lastDate) => {
     const lengthNumber = lastDate.length - 1;
-    return lastDate[lengthNumber]?.date;
+    return lastDate[lengthNumber]?.date
+      ? lastDate[lengthNumber]?.date
+      : "Payment Due";
   };
 
   return (
@@ -67,7 +71,7 @@ const AllPayments = () => {
 
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg mx-4">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="py-3 px-6">
                   Name
@@ -76,10 +80,10 @@ const AllPayments = () => {
                   Payment Type
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  Month
+                  Last Month
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  Payment Date
+                  Last Payment Date
                 </th>
                 <th scope="col" className="py-3 px-6">
                   Amount
@@ -89,19 +93,19 @@ const AllPayments = () => {
             <tbody>
               {users &&
                 users.map((user) => (
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
                     <th
                       scope="row"
                       class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                     >
                       {user.name}
                     </th>
-                    <th
+                    <td
                       scope="row"
-                      class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      class="py-4 px-6 font-medium whitespace-nowrap dark:text-white"
                     >
-                      {user?.paymentType}
-                    </th>
+                      {user?.paymentType ? user?.paymentType : "Payment Due"}
+                    </td>
                     <td class="py-4 px-6">
                       {depositDate(user?.depositAmountDate)}
                     </td>

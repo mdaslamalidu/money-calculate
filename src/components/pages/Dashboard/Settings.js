@@ -26,7 +26,6 @@ const Settings = () => {
     const nidNumber = form.nidNumber.value;
     const phoneNumber = form.phoneNumber.value;
     const image = form.image.files[0];
-    const password = form.password.value;
     const formData = new FormData();
     formData.append("image", image);
 
@@ -41,7 +40,6 @@ const Settings = () => {
         const usersInfo = {
           email,
           name,
-          password,
           phoneNumber,
           presentAddress,
           permanentAddress,
@@ -192,21 +190,7 @@ const Settings = () => {
                   className="w-full px-3 py-2 border rounded-md border-blue-300 focus:outline-blue-500 bg-white text-gray-900"
                 />
               </div>
-              <div>
-                <div className="flex justify-between">
-                  <label htmlFor="password" className="text-sm mb-2">
-                    Password
-                  </label>
-                </div>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  required
-                  placeholder="*******"
-                  className="w-full px-3 py-2 border rounded-md border-blue-300 focus:outline-blue-500 bg-white text-gray-900"
-                />
-              </div>
+
               <div>
                 <label htmlFor="image" className="block mb-2 text-sm">
                   Select Image:
