@@ -8,7 +8,6 @@ const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [UserRole, setUserRole] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log(user);
 
   useEffect(() => {
     getuser(user?.email).then((data) => {

@@ -16,50 +16,54 @@ const MemberHistory = () => {
 
   console.log(user);
 
+  const displayAmount = (userData) => {
+    const usersData = userData.map((d) => d.amount + "//");
+    return usersData;
+  };
+  const displayDate = (userData) => {
+    const usersData = userData.map((d) => d.date + "//");
+    return usersData;
+  };
+
   return (
     <div>
       <Header></Header>
       <div>
-        <h1 className="my-4 text-center text-2xl font-bold">History of</h1>
-        <div className="overflow-x-auto relative shadow-md sm:rounded-lg mx-4">
+        <h1 className="my-4 text-center text-2xl font-bold">
+          History of {user.name}
+        </h1>
+        <div className="w-full md:w-2/3 mx-auto overflow-x-auto relative shadow-md sm:rounded-lg mx-4">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-              <tr>
-                <th scope="col" className="py-3 px-6">
-                  Name
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Type
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Month
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Deposit Date
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Payment
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th
-                  scope="row"
-                  class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  {user?.name}
-                </th>
-                <th
-                  scope="row"
-                  class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  {user?.paymentType}
-                </th>
-                <td class="py-4 px-6"></td>
-                <td class="py-4 px-6"></td>
-              </tr>
-            </tbody>
+            <>
+              <h2
+                scope="row"
+                class="py-4 px-6 font-medium text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <span className="text-2xl font-bold mr-4">Name:</span>{" "}
+                {user?.name}
+              </h2>
+              <h2
+                scope="row"
+                class="py-4 px-6 font-medium text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <span className="text-2xl font-bold mr-4">PaymentType:</span>{" "}
+                {user?.paymentType}
+              </h2>
+              <h2
+                scope="row"
+                class="py-4 px-6 font-medium text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <span className="text-2xl font-bold mr-4">Payment:</span>{" "}
+                {user?.paymentType && displayAmount(user?.depositAmountDate)}{" "}
+              </h2>
+              <h2
+                scope="row"
+                class="py-4 px-6 font-medium text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <span className="text-2xl font-bold mr-4">PaymentDate:</span>{" "}
+                {user?.paymentType && displayDate(user?.depositAmountDate)}{" "}
+              </h2>
+            </>
           </table>
         </div>
       </div>
