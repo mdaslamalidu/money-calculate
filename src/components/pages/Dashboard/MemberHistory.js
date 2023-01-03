@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../Header";
 
 const MemberHistory = () => {
+  const [user, setUser] = useState("");
   const { id } = useParams();
   console.log(id);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/getUser/${id}`)
+      .then((res) => res.json())
+      .then((data) => setUser(data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  console.log(user);
+
   return (
     <div>
       <Header></Header>
@@ -36,11 +47,15 @@ const MemberHistory = () => {
                 <th
                   scope="row"
                   class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                ></th>
+                >
+                  {user?.name}
+                </th>
                 <th
                   scope="row"
                   class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                ></th>
+                >
+                  {user?.paymentType}
+                </th>
                 <td class="py-4 px-6"></td>
                 <td class="py-4 px-6"></td>
               </tr>
