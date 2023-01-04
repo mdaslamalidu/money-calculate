@@ -13,6 +13,7 @@ const MemberDetails = () => {
       .then((data) => setUser(data))
       .catch((error) => console.log(error));
   }, []);
+  console.log(user.imgURl);
   return (
     <div>
       <Header></Header>
@@ -29,8 +30,8 @@ const MemberDetails = () => {
               <img
                 class="w-16 h-16 rounded-full"
                 src={
-                  user?.imgURL
-                    ? user?.imgURL
+                  user?.imgURl
+                    ? user?.imgURl
                     : "https://www.pngall.com/wp-content/uploads/5/User-Profile-Transparent-180x180.png"
                 }
                 alt="Rounded avatar"
