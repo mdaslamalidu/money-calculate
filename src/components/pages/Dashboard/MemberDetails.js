@@ -8,7 +8,7 @@ const MemberDetails = () => {
   console.log(user);
 
   useEffect(() => {
-    fetch(`https://server-site-nu.vercel.app/getUser/${id}`)
+    fetch(`https://server-site-inky.vercel.app/getUser/${id}`)
       .then((res) => res.json())
       .then((data) => setUser(data))
       .catch((error) => console.log(error));

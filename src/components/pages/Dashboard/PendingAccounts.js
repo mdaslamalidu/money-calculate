@@ -12,7 +12,7 @@ const PendingAccounts = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`https://server-site-nu.vercel.app/users/${id}`, {
+    fetch(`https://server-site-inky.vercel.app/users/${id}`, {
       method: "DELETE",
     })
       .then(() => {
