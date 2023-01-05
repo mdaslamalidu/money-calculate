@@ -76,7 +76,7 @@ const UserMenu = () => {
 
           <span className="mx-4 font-medium">Settings/Profile</span>
         </NavLink>
-        <div className="w-full mt-24">
+        <div className="w-full mt-8">
           <button
             onClick={handleLogout}
             className="w-full flex items-center pl-4 py-2 mt-3  transition-colors rounded-l-lg duration-300 transform  hover:bg-white font-bold  hover:text-blue-700 text-white"
